@@ -109,15 +109,12 @@ const CountryDetail = ({ match, location }) => {
 
   React.useEffect(() => {
     const fetchCountry = async () => {
-      const res = await axios.get(`${API_URL}/name/${match.params.name}`);
-
-      console.log(match.params.name);
-      console.log(res);
-      setCountry({ ...res.data[0], loaded: true });
+      const res = await axios.get(`${API_URL}/alpha/${match.params.code}`);
+      setCountry({ ...res.data, loaded: true });
     };
 
     fetchCountry();
-  }, [match.params.name]);
+  }, [match.params.code]);
 
   React.useEffect(() => {
     const fetchCountries = async () => {
@@ -155,7 +152,7 @@ const CountryDetail = ({ match, location }) => {
 
                 <InfoRow>
                   <Info>Currency</Info>
-                  {country?.currencies.map((currency, index) => (
+                  {country.currencies.map((currency, index) => (
                     <Value key={index}>
                       {(index ? ", " : "") + currency.name}
                     </Value>
@@ -164,12 +161,12 @@ const CountryDetail = ({ match, location }) => {
 
                 <InfoRow>
                   <Info>Population:</Info>
-                  <Value>{country?.population}</Value>
+                  <Value>{separateByThousands(country.population)}</Value>
                 </InfoRow>
 
                 <InfoRow>
                   <Info>Languge:</Info>
-                  {country?.languages.map((language, index) => (
+                  {country.languages.map((language, index) => (
                     <Value key={index}>
                       {(index ? ", " : "") + language.name}
                     </Value>
@@ -210,7 +207,7 @@ const Borders = ({ borders, countries }) => {
             <Card key={border}>
               <CardContainer
                 to={{
-                  pathname: `/country/${country.name}`,
+                  pathname: `/country/${country.alpha3Code}`,
                   state: countries,
                 }}
               >
@@ -224,16 +221,7 @@ const Borders = ({ borders, countries }) => {
                 </FlagColumn>
 
                 <DetailsColumn>
-                  <Info>
-                    {/* <Link
-                      to={{
-                        pathname: `/country/${country.name}`,
-                        state: countries,
-                      }}
-                    > */}
-                    {country.name}
-                    {/* </Link> */}
-                  </Info>
+                  <Info>{country.name}</Info>
                   <Info>{separateByThousands(country.population)}</Info>
                 </DetailsColumn>
               </CardContainer>

@@ -74,8 +74,8 @@ const CountryCard = ({ countriesPage, countries }) => (
   <Root>
     {countriesPage?.map((country) => (
       <Card
-        key={country.name}
-        to={{ pathname: `/country/${country.name}`, state: countries }}
+        key={country.alpha3Code}
+        to={{ pathname: `/country/${country.alpha3Code}`, state: countries }}
       >
         <ImageColumn>
           <ImgElement src={country.flag} />

@@ -30,7 +30,7 @@ const ReactPaginateStyled = styled.div`
   }
 `;
 
-const SpinnerWrapper = styled.div`
+export const SpinnerWrapper = styled.div`
   text-align: center;
 `;
 
@@ -67,8 +67,7 @@ const CountryListScreen = () => {
       <AppLayout.Container>
         {loading ? (
           <SpinnerWrapper>
-            {" "}
-            <Ring />{" "}
+            <Ring />
           </SpinnerWrapper>
         ) : (
           <>

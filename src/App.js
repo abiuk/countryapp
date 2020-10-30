@@ -8,8 +8,8 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={CountryListScreen} />
-        <Route path="/country/:name" component={CountryDetails} />
-        {/* <Route path="/:code" component={CountryDetails} /> */}
+        {/* <Route path="/country/:name" component={CountryDetails} /> */}
+        <Route path="/country/:code" component={CountryDetails} />
       </Switch>
     </Router>
   );
