@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+import {separateByThousands} from "../utils"
+
 const Root = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,7 +74,7 @@ const NO_CAPITAL = "N/A";
 
 const CountryCard = ({ countriesPage, countries }) => (
   <Root>
-    {countriesPage?.map((country) => (
+    {countriesPage.map((country) => (
       <Card
         key={country.alpha3Code}
         to={{ pathname: `/country/${country.alpha3Code}`, state: countries }}
@@ -87,11 +89,11 @@ const CountryCard = ({ countriesPage, countries }) => (
           </InfoRow>
           <InfoRow>
             <Info>Population</Info>
-            <Value>{country.population}</Value>
+            <Value>{separateByThousands(country.population)}</Value>
           </InfoRow>
           <InfoRow>
             <Info>Capital</Info>
-            <Value>{country.capital ? country.capital : NO_CAPITAL}</Value>
+            <Value>{country.capital || NO_CAPITAL}</Value>
           </InfoRow>
         </InfoColumn>
       </Card>

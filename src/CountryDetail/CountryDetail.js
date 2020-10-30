@@ -128,6 +128,12 @@ const CountryDetail = ({ match, location }) => {
     fetchCountries();
   }, [location.state]);
 
+  const getArrayValues = (value, index) => (
+    <Value key={index}>
+    {(index ? ", " : "") + value}
+  </Value>
+  )
+
   if (country.loaded === false) {
     return <PageNotFound />;
   }
@@ -147,18 +153,14 @@ const CountryDetail = ({ match, location }) => {
 
                 <InfoRow>
                   <Info>Capital:</Info>
-                  <Value>{country?.capital ? country?.capital : "N/A"}</Value>
+                  <Value>{country.capital ||  "N/A"}</Value>
                 </InfoRow>
-
                 <InfoRow>
-                  <Info>Currency</Info>
+                  <Info>Currency:</Info>
                   {country.currencies.map((currency, index) => (
-                    <Value key={index}>
-                      {(index ? ", " : "") + currency.name}
-                    </Value>
+                    getArrayValues(currency.name, index)                       
                   ))}
                 </InfoRow>
-
                 <InfoRow>
                   <Info>Population:</Info>
                   <Value>{separateByThousands(country.population)}</Value>
@@ -167,9 +169,7 @@ const CountryDetail = ({ match, location }) => {
                 <InfoRow>
                   <Info>Languge:</Info>
                   {country.languages.map((language, index) => (
-                    <Value key={index}>
-                      {(index ? ", " : "") + language.name}
-                    </Value>
+                    getArrayValues(language.name, index)
                   ))}
                 </InfoRow>
               </InfoColumn>
@@ -177,7 +177,6 @@ const CountryDetail = ({ match, location }) => {
           </DetailsRow>
         </AppLayout.Container>
       </AppLayout>
-
       <Borders borders={country.borders} countries={countries} />
     </Root>
   );
