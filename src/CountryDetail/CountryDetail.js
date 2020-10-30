@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useHistory, Link } from "react-router-dom";
+
 import { Info, InfoRow, Value } from "../CountryCard/CountryCard";
 import AppLayout from "../Layout/Layout";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { separateByThousands } from "../utils";
 import { API_URL } from "../utils";
 import PageNotFound from "../PageNotFound/PageNotFound";

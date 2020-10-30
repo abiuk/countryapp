@@ -3,9 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Root = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 16px;
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
 `;
@@ -13,9 +10,6 @@ const Root = styled.div`
 const Container = styled.div`
   max-width: 1010px;
   padding: 26px 20px;
-  width: 100%;
-  display: flex;
-  align-items: center;
   margin: 0 auto;
 `;
 

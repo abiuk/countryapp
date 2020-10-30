@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import CountryCard from "../CountryCard/CountryCard";
-import axios from "axios";
-import AppLayout from "../Layout/Layout";
-import ReactPaginate from "react-paginate";
-import { API_URL } from "../utils";
 import { Ring } from "react-awesome-spinners";
+import axios from "axios";
+import ReactPaginate from "react-paginate";
+
+import CountryCard from "../CountryCard/CountryCard";
+import AppLayout from "../Layout/Layout";
+import { API_URL } from "../utils";
 
 const ReactPaginateStyled = styled.div`
   display: flex;
