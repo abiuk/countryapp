@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import {separateByThousands} from "../utils"
+import { separateByThousands } from "../utils";
 
 const Root = styled.div`
   display: flex;

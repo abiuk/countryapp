@@ -129,10 +129,8 @@ const CountryDetail = ({ match, location }) => {
   }, [location.state]);
 
   const getArrayValues = (value, index) => (
-    <Value key={index}>
-    {(index ? ", " : "") + value}
-  </Value>
-  )
+    <Value key={index}>{(index ? ", " : "") + value}</Value>
+  );
 
   if (country.loaded === false) {
     return <PageNotFound />;
@@ -153,13 +151,13 @@ const CountryDetail = ({ match, location }) => {
 
                 <InfoRow>
                   <Info>Capital:</Info>
-                  <Value>{country.capital ||  "N/A"}</Value>
+                  <Value>{country.capital || "N/A"}</Value>
                 </InfoRow>
                 <InfoRow>
                   <Info>Currency:</Info>
-                  {country.currencies.map((currency, index) => (
-                    getArrayValues(currency.name, index)                       
-                  ))}
+                  {country.currencies.map((currency, index) =>
+                    getArrayValues(currency.name, index)
+                  )}
                 </InfoRow>
                 <InfoRow>
                   <Info>Population:</Info>
@@ -168,9 +166,9 @@ const CountryDetail = ({ match, location }) => {
 
                 <InfoRow>
                   <Info>Languge:</Info>
-                  {country.languages.map((language, index) => (
+                  {country.languages.map((language, index) =>
                     getArrayValues(language.name, index)
-                  ))}
+                  )}
                 </InfoRow>
               </InfoColumn>
             </DetailsContainer>
